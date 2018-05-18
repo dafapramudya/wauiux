@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 import { Form, Label, Container, Content, Picker, Input, Button, Item } from 'native-base';
 import { StackNavigator, TabNavigator, NavigationActions, StackActions } from 'react-navigation';
+import {RkTextInput} from 'react-native-ui-kitten';
+import { connect } from 'react-redux';
 
-export default class ConfigureProfile extends Component{
+class ConfigureProfile extends Component{
 
     state = {
         phone: "",
@@ -16,29 +18,44 @@ export default class ConfigureProfile extends Component{
         })
     }
 
-    navigateToMain(){
-
-        const ResetNav = StackActions.reset({
-            index: 0,
-            actions: [NavigationActions.navigate({ 
-                routeName: 'Main',
-                params: {phone: this.state.phone, name: this.state.name}
-            })],
-        });
-
-        this.props.navigation.dispatch(ResetNav);
+    navigateToMain() {
+        this.props.dispatch({
+          type: 'Navigation/RESET',
+          index: 0,
+          key: null,
+          actions: [
+            {
+              type: 'Navigation/NAVIGATE',
+              routeName: 'Main',
+              params: {phone: this.state.phone, name: this.state.name}
+            },
+          ]
+        })
     }
+
+    // navigateToMain(){
+
+    //     const ResetNav = StackActions.reset({
+    //         index: 0,
+    //         actions: [NavigationActions.navigate({ 
+    //             routeName: 'Main',
+    //             params: {phone: this.state.phone, name: this.state.name}
+    //         })],
+    //     });
+
+    //     this.props.navigation.dispatch(ResetNav);
+    // }
 
     render(){
         return(
-            <Container style={{flex: 1, marginTop: 20}}>
+            <Container style={{flex: 1, marginTop: 20}} androidStatusBarColor="#075e54"> 
                 <Content>
                     <Image
                       style={styles.avatar}
                       source={require("../assets/img/avatar.png")}
                     />
                     <Item regular style={{alignSelf: "center", marginTop: 50}}>
-                        <Input placeholder="Input your name" onChangeText={text => this.setState({ 
+                        <RkTextInput placeholder="Input your name" onChangeText={text => this.setState({ 
                             name: text
                          })}/>
                     </Item>
@@ -51,6 +68,8 @@ export default class ConfigureProfile extends Component{
         )
     }
 }
+
+export default connect()(ConfigureProfile)
 
 const styles = StyleSheet.create({
     avatar: {

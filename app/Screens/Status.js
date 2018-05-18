@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, FlatList, Image } from 'react-native';
 import { Icon, Fab, Container, Content, Left, Body, List, ListItem, Header } from 'native-base';
+import {RkText} from 'react-native-ui-kitten';
+import {connect} from 'react-redux';
 
-export default class Status extends Component{
+class Status extends Component{
     render(){
         return(
             <Container style={{flex: 1, marginTop: 20}} androidStatusBarColor="#075e54">
@@ -16,7 +18,8 @@ export default class Status extends Component{
                                 />
                             </Left>
                             <Body>
-                                <Text>Your status</Text>
+                                <RkText>My status</RkText>
+                                <Text note>Tap to add status update</Text>
                             </Body>
                         </ListItem>
                     </List>
@@ -41,6 +44,8 @@ export default class Status extends Component{
         )
     }
 }
+
+export default connect()(Status)
 
 const styles = StyleSheet.create({
     avatar: {

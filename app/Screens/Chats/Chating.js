@@ -6,8 +6,11 @@ import {
   Card, CardItem
 } from 'native-base';
 import { GiftedChat, Bubble } from 'react-native-gifted-chat'
+import { connect } from 'react-redux';
 
-export default class Chatting extends Component{
+import { allMsgs } from './action'
+
+class Chatting extends Component{
 
     constructor(props){
         super(props);
@@ -106,6 +109,8 @@ export default class Chatting extends Component{
     }
 
 }
+
+export default connect()(Chatting)
 
 const styles = StyleSheet.create({
   container: {

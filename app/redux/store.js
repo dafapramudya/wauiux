@@ -1,17 +1,23 @@
-import { createStore, applyMiddleware } from 'redux';
-import { createLogger } from 'redux-logger';
+import {createReactNavigationReduxMiddleware, } from 'react-navigation-redux-helpers';
+import {createStore, applyMiddleware} from 'redux';
+import logger from 'redux-logger';
+import promise from 'redux-promise-middleware';
+
+import reducers from './rootReducer';
 import promiseMiddleware from 'redux-promise-middleware';
 
-import rootReducers from '../reducers/rootReducers';
+const middleware = createReactNavigationReduxMiddleware(
+    "root",
+    state => state.nav,
+);
 
-const logger = createLogger({
-
-})
-
-export default store = createStore(
-    rootReducers,
+const store = createStore(  
+    reducers,
     applyMiddleware(
+        middleware,
         logger,
         promiseMiddleware()
     )
-)
+);
+
+export default store;

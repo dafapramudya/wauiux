@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { Form, Label, Container, Content, Picker, Input, Button, Item } from 'native-base';
-import { RkText, RkButton } from 'react-native-ui-kitten';
+import { RkText, RkButton, RkTextInput } from 'react-native-ui-kitten';
+import {connect} from 'react-redux';
 
-export default class GetStarted extends Component {
+class GetStarted extends Component {
 
     state = {
         selected1: "key1",
@@ -55,26 +56,28 @@ export default class GetStarted extends Component {
 
     render(){
         return(
-            <View style={{flex: 1, marginTop: "45%"}}>
+            <View style={{flex: 1, marginTop: "45%"}} androidStatusBarColor="#075e54">
                 <Container>
                     <Content>
                         <View>
-                            <RkText rkType="header" style={styles.text}>Please confirm your country and enter your phone number{"\n"}</RkText>
+                            <RkText style={styles.text}>Please confirm your country and enter your phone number{"\n"}</RkText>
                             <Form>
-                                <Picker
-                                    iosHeader="Select one"
-                                    androidHeader="Select one"
-                                    mode="dropdown"
-                                    selectedValue={this.state.selected1}
-                                    onValueChange={this.onValueChange.bind(this)}
-                                >
-                                    {this.state.countries.map((country) => (
-                                        <Picker.Item label={country.name} value={country.id} key={country.id}/>
-                                    ))}
+                                <Item>
+                                    <Picker
+                                        iosHeader="Select one"
+                                        androidHeader="Select one"
+                                        mode="dropdown"
+                                        selectedValue={this.state.selected1}
+                                        onValueChange={this.onValueChange.bind(this)}
+                                    >
+                                        {this.state.countries.map((country) => (
+                                            <Picker.Item label={country.name} value={country.id} key={country.id}/>
+                                        ))}
 
-                                </Picker>
+                                    </Picker>
+                                </Item>
                                 <Item regular>
-                                    <Input placeholder="Your Phone Number" keyboardType="numeric" onChangeText={text => this.setState({phone: text})}/>
+                                    <RkTextInput placeholder="Your Phone Number" keyboardType="numeric" onChangeText={text => this.setState({phone: text})}/>
                                 </Item>
                                 
                                 <Button block style={styles.buttonStyle} onPress={()=> this.props.navigation.navigate("Configure", {number: this.state.phone})}>
@@ -89,6 +92,7 @@ export default class GetStarted extends Component {
     }
 }
 
+export default connect()(GetStarted);
 
 const styles = StyleSheet.create({
     text:{

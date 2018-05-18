@@ -14,11 +14,11 @@ class Settings extends Component{
                                 <Left>
                                     <Image
                                         style={styles.avatar}
-                                        source={require("../../assets/img/avatar.png")}
+                                        source={require("../../assets/img/me.jpg")}
                                     />
                                 </Left>
                                 <Body>
-                                    <Text style={{fontSize: 18}}>Dafa Pramudya</Text>
+                                    <Text style={{fontSize: 20}}>Dafa Pramudya</Text>
                                     <Text note>Learn from the error</Text>
                                 </Body>
                             </ListItem>
@@ -30,7 +30,7 @@ class Settings extends Component{
                                     <Icon name="key" style={styles.iconColor}/>
                                 </Left>
                                 <Body>
-                                    <Text>Account</Text>
+                                    <Text style={styles.fontList}>Account</Text>
                                 </Body>
                             </ListItem>
 
@@ -39,7 +39,7 @@ class Settings extends Component{
                                     <Icon name="message" type="Entypo" style={styles.iconColor}/>
                                 </Left>
                                 <Body>
-                                    <Text>Chats</Text>
+                                    <Text style={styles.fontList}>Chats</Text>
                                 </Body>
                             </ListItem>
 
@@ -48,7 +48,7 @@ class Settings extends Component{
                                     <Icon name="ios-notifications" style={styles.iconColor}/>
                                 </Left>
                                 <Body>
-                                    <Text>Notification</Text>
+                                    <Text style={styles.fontList}>Notification</Text>
                                 </Body>
                             </ListItem>
 
@@ -57,7 +57,7 @@ class Settings extends Component{
                                     <Icon name="data-usage" type="MaterialIcons" style={styles.iconColor}/>
                                 </Left>
                                 <Body>
-                                    <Text>Data and storage usage</Text>
+                                    <Text style={styles.fontList}>Data and storage usage</Text>
                                 </Body>
                             </ListItem>
 
@@ -66,7 +66,7 @@ class Settings extends Component{
                                     <Icon name="people" style={styles.iconColor}/>
                                 </Left>
                                 <Body>
-                                    <Text>Invite a friend</Text>
+                                    <Text style={styles.fontList}>Invite a friend</Text>
                                 </Body>
                             </ListItem>
 
@@ -75,7 +75,7 @@ class Settings extends Component{
                                     <Icon name="help-circle" style={styles.iconColor}/>
                                 </Left>
                                 <Body>
-                                    <Text>Help</Text>
+                                    <Text style={styles.fontList}>Help</Text>
                                 </Body>
                             </ListItem>
                         </List>
@@ -104,5 +104,9 @@ const styles = StyleSheet.create({
 
     iconColor:{
         color:"#128c7e"
+    },
+
+    fontList:{
+        fontSize: 15
     }
 })

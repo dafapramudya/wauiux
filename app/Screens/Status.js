@@ -14,7 +14,7 @@ class Status extends Component{
                             <Left>
                                 <Image
                                     style={styles.avatar}
-                                    source={require("../assets/img/avatar.png")}
+                                    source={require("../assets/img/me.jpg")}
                                 />
                             </Left>
                             <Body>

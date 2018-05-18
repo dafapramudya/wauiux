@@ -21,7 +21,8 @@ class Chatting extends Component{
     state = {
         name: "",
         msg: "",
-        messages: []
+        messages: [],
+        pic: null,
     }
 
     componentWillMount() {
@@ -44,7 +45,8 @@ class Chatting extends Component{
     componentDidMount(){
         this.setState({
             name: this.props.navigation.state.params.name,
-            msg: this.props.navigation.state.params.msg
+            msg: this.props.navigation.state.params.msg,
+            pic: this.props.navigation.state.params.pic
         })
     }
 
@@ -78,7 +80,7 @@ class Chatting extends Component{
                     <Button transparent onPress={()=>this.props.navigation.goBack()}>
                         <Icon name="arrow-back"/>
                     </Button>
-                    <Thumbnail source={{ uri: 'https://cdn0.iconfinder.com/data/icons/users-android-l-lollipop-icon-pack/24/user-512.png' }} style={{width: 40, height: 40, marginTop:2}}/>
+                    <Thumbnail source={{ uri: this.state.pic }} style={{width: 40, height: 40, marginTop:2}}/>
                 </Left>
                 <Body style={{left: 25}}>
                     <Text style={{fontSize: 20, fontWeight: "bold", color: "#ffffff"}}>{this.state.name}</Text>

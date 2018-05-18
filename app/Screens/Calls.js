@@ -5,24 +5,6 @@ import {connect} from 'react-redux';
 
 class Calls extends Component{
 
-    state = {
-        callsData: [{
-            id: 1,
-            name: "Chelsea Islan",
-            date: "09.00 AM"
-        },
-        {
-            id: 2,
-            name: "Pevita Pearce",
-            date: "07.00 AM"
-        },
-        {
-            id: 3,
-            name: "Yuna Taira",
-            date: "06.00 AM"
-        }]
-    }
-
     _keyExtractor = (item, index) => item.name;
 
     _renderItem = ({item, index}) => {
@@ -32,11 +14,11 @@ class Calls extends Component{
                 avatar 
             >
                 <Left>
-                    <Thumbnail source={{ uri: 'https://cdn0.iconfinder.com/data/icons/users-android-l-lollipop-icon-pack/24/user-512.png' }} />
+                    <Thumbnail source={{ uri: item.pic }} />
                 </Left>
                 <Body>
                     <Text style={{fontWeight: "bold"}}>{item.name}</Text>
-                    <Text note style={styles.dateText}>{item.date}</Text>
+                    <Text note style={styles.dateText}>{item.time}</Text>
                 </Body>
                 <Right>
                     <Icon name="videocam"/>
@@ -51,8 +33,8 @@ class Calls extends Component{
             <Container androidStatusBarColor="#075e54">
                 <Content>
                     <FlatList
-                        data={this.state.callsData}
-                        extraData={this.state}
+                        data={this.props.chattingReducer.msgs}
+                        extraData={this.props.chattingReducer.msgs}
                         renderItem={this._renderItem}
                         keyExtractor={this._keyExtractor}
                     />
@@ -69,7 +51,11 @@ class Calls extends Component{
     }
 }
 
-export default connect()(Calls)
+const mapStateToProps = (state) => ({
+    chattingReducer: state.chattingReducer
+})
+
+export default connect(mapStateToProps)(Calls)
 
 const styles = StyleSheet.create({
     dateText:{

@@ -25,11 +25,11 @@ class Chats extends Component{
         return (
             <ListItem
                 key={index}
-                onPress={() => this.props.navigation.navigate("Chating", { name: item.name, msg: item.msg })}
+                onPress={() => this.props.navigation.navigate("Chating", { name: item.name, msg: item.msg, pic: item.pic })}
                 avatar
             >
                 <Left>
-                    <Thumbnail source={{ uri: 'https://cdn0.iconfinder.com/data/icons/users-android-l-lollipop-icon-pack/24/user-512.png' }} />
+                    <Thumbnail source={{uri: item.pic}} />
                 </Left>
                 <Body>
                     <RkText style={{fontWeight:"bold"}}>{item.name}</RkText>

@@ -22,7 +22,7 @@ class Contacts extends Component{
                 avatar
             >
                 <Left>
-                    <Thumbnail source={{ require: 'https://cdn0.iconfinder.com/data/icons/users-android-l-lollipop-icon-pack/24/user-512.png' }} />
+                    <Thumbnail source={{ uri: 'https://cdn0.iconfinder.com/data/icons/users-android-l-lollipop-icon-pack/24/user-512.png' }} />
                 </Left>
                 <Body>
                     <RkText style={{fontWeight:"bold"}}>{item.name}</RkText>
